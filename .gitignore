@@ -1,0 +1,5 @@
+
+*.cache
+aspnet-core/src/lorganic.DbMigrator/appsettings.json
+aspnet-core/src/lorganic.HttpApi.Host/appsettings.json
+aspnet-core/src/lorganic.HttpApi.Host/tempkey.jwk

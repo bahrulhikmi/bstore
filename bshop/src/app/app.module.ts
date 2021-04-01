@@ -27,6 +27,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import {FormsModule}  from '@angular/forms';
 import { ProductService } from './product.service';
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ProductService } from './product.service';
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -56,9 +58,10 @@ import { ProductService } from './product.service';
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
       {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
       {path: 'order-success', component: OrderSuccessComponent,canActivate: [AuthGuard] },      
-      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       {path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
     ]),
     NgbModule,
   ],

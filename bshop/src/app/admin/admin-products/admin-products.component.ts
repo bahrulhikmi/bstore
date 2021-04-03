@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/product.service';
+import dtLang from 'src/app/resources/datatable-lang-id.json';
 
 @Component({
   selector: 'app-admin-products',
@@ -11,30 +12,34 @@ import { ProductService } from 'src/app/product.service';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[];
-  filteredProducts: Product[]
   subscription: Subscription;
-  
+  dtOptions: DataTables.Settings = {};
+
+  dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(private productService:ProductService) { 
     this.subscription= productService.getAll()
-    .subscribe(products => this.filteredProducts = this.products = products);    
+    .subscribe(products => {
+      this.products = products;
+      this.dtTrigger.next();
+    });    
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.dtTrigger.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength:10,
+      language: dtLang
+    };  
+    
   }
 
   edit(p){
     console.log(p);
   }
-
-  filter(query: string){
-    this.filteredProducts = (query)?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
-  }
-
 }

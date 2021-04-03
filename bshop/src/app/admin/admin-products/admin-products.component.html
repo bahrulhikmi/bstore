@@ -3,14 +3,7 @@
 <a routerLink="/admin/products/new" class="btn btn-primary">Tambahkan Produk</a>
 </p>
 
-<p>
-    <input 
-    #query
-    (keyup)="filter(query.value)"
-    type="text" class="form-control" placeholder="Cari Produk...">
-</p>
-
-<table datatable class="table">
+<table datatable  class="table table-striped dt-responsive nowrap" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
 <thead>
     <tr>
         <th>Nama Produk</th>
@@ -19,9 +12,9 @@
     </tr>
 </thead>
 <tbody>
-    <tr *ngFor="let p of filteredProducts">
+    <tr *ngFor="let p of products">
         <td>{{[p.title]}}</td>
-        <td>{{p.price}}</td>
+        <td>{{p.price |currency:'Rp.'}}</td>
         <td>
             <a [routerLink]="['/admin/products/', p.key]" >Ubah</a>
         </td>

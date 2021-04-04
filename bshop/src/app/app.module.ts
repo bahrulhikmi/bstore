@@ -28,6 +28,7 @@ import { CategoryService } from './category.service';
 import {FormsModule}  from '@angular/forms';
 import { ProductService } from './product.service';
 import {DataTablesModule} from 'angular-datatables';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {DataTablesModule} from 'angular-datatables';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,

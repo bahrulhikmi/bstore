@@ -13,13 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  categories$;
-  category;
+  category: string;
 
   constructor(
     route: ActivatedRoute,
-    productService: ProductService, 
-    categoryService: CategoryService) {
+    productService: ProductService) {
       productService
       .getAll().pipe(switchMap(products =>{
         this.products = products;
@@ -30,9 +28,6 @@ export class ProductsComponent implements OnInit {
               this.products.filter(p=> p.category === this.category):
               this.products;
       });      
-      this.categories$ = categoryService.getAll();
-
-     
    }
 
   ngOnInit(): void {

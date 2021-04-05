@@ -29,6 +29,7 @@ import {FormsModule}  from '@angular/forms';
 import { ProductService } from './product.service';
 import {DataTablesModule} from 'angular-datatables';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

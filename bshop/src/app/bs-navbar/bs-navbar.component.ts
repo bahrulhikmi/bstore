@@ -24,12 +24,9 @@ export class BsNavbarComponent implements OnInit {
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     let cart$ = await this.shoppingCartService.getCart();
+
     cart$.subscribe(cart => {
-      console.log(cart);
-      this.shoppingCartItemCount = 0;
-      for (let productId in cart.items) {
-        this.shoppingCartItemCount += cart.items[productId].quantity;
-      }
+      this.shoppingCartItemCount = cart.totalItemsCount;
     });
 
   }

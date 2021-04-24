@@ -8,22 +8,22 @@ import { ShoppingCartService } from '../shopping-cart.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
- @Input('product') product;
- @Input('show-actions') showActions = true;
- @Input('shopping-cart') shoppingCart;
-  constructor(private cartService:ShoppingCartService) { }
+  @Input('product') product;
+  @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart;
+  constructor(private cartService: ShoppingCartService) { }
 
-  addToCart(){
+  addToCart() {
     this.cartService.addToCart(this.product);
   }
 
-  removeFromCart(){
+  removeFromCart() {
     this.cartService.removeFromCart(this.product);
   }
 
-  getQuantity(){
-    if(!this.shoppingCart) return 0;
+  getQuantity() {
+    if (!this.shoppingCart) return 0;
     let item = this.shoppingCart.items[this.product.key];
-    return item? item.quantity: 0;
+    return item ? item.quantity : 0;
   }
 }

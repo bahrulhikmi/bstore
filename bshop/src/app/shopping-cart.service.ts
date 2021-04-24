@@ -21,7 +21,7 @@ export class ShoppingCartService {
 
   async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId();
-    return this.db.object('/shopping-carts/' + cartId).valueChanges().pipe(map(a => new ShoppingCart(a)));
+    return this.db.object('/shopping-carts/' + cartId).valueChanges().pipe(map(a => new ShoppingCart((<any>a).items)));
   }
 
   private getItem(cartId: string, productId: string) {

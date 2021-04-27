@@ -5,6 +5,7 @@ import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Order } from '../models/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-out',
@@ -21,13 +22,16 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private shoppingCartService: ShoppingCartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {
   }
 
-  save() {
+  async save() {
     let order = new Order(this.userId, this.shipping, this.cart);
-    console.log(this.orderService.storeOrder(order));
+    let result = await this.orderService.placeOrder(order);
+    this.router.navigate(['/order-success', result.key]);
+
   }
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();

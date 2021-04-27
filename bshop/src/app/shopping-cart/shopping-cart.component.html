@@ -1,30 +1,41 @@
 <h1>Shopping Cart</h1>
-<ng-container *ngIf="cart$ | async as cart">
+<div class="row col-10" *ngIf="cart$ | async as cart">
 
-<p>You have {{ cart.totalItemsCount }} items in your shopping cart</p>
+<p>Ada {{ cart.totalItemsCount }} barang di keranjang belanjamu</p>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th></th>
+            <th>Produk</th>
+            <th  class="text-center" style="width: 230px">Jumlah</th>
+            <th  class="text-right"  style="width: 200px">Harga</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of cart.items">
+            <td>
+                <img [style.backgroundImage]="'url(' + item.product.imageUrl+')'" class="thumbnail">
+            </td>
             <td>{{item.product.title}}</td>            
-            <td>{{item.quantity}}</td>
-            <td>{{item.totalPrice | currency:'Rp. ':true}}</td>
+            <td>
+                <product-quantity [product]="item.product" [shopping-cart]="cart"></product-quantity>
+            </td>            
+            <td  class="text-right">{{item.totalPrice | currency:'Rp. ':true}}</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <th></th>
             <th></th>
-            <th>{{cart.totalPrice | currency:'Rp. ':true}}</th>
+            <th></th>
+            <th  class="text-right">{{cart.totalPrice | currency:'Rp. ':true}}</th>
         </tr>
     </tfoot>
 </table>
-
-</ng-container>
+<button 
+(click) = "clearCart()"
+class="btn btn-danger btn-sm">
+Kosongkan Keranjang Belanja
+</button>
+</div>

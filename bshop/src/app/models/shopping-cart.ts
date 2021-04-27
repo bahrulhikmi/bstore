@@ -4,7 +4,9 @@ import { ShoppingCartItem } from "./shopping-cart-item";
 export class ShoppingCart {
     items: ShoppingCartItem[] = [];
 
-    constructor(itemsMap) {
+    constructor(params) {
+        if (!params) return;
+        let itemsMap = params.items;
         for (let productId in itemsMap) {
             this.items.push(new ShoppingCartItem(itemsMap[productId]));
         }
@@ -15,7 +17,6 @@ export class ShoppingCart {
         for (let productId in this.items) {
             sum += this.items[productId].totalPrice;
         }
-
         return sum;
     }
 

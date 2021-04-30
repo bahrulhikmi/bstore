@@ -16,4 +16,15 @@ export class OrderService {
     this.shoppingCartService.clearCart();
     return result;
   }
+
+  getOrders() {
+    return this.db.list('/orders', query =>
+      query.orderByChild('datePlaced')).valueChanges();
+  }
+
+  getOrdersByUser(userId: string) {
+    return this.db.list('/orders', query =>
+      query.orderByChild('userId').equalTo(userId)
+    ).valueChanges();
+  }
 }

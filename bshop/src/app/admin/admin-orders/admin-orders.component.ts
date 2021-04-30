@@ -1,4 +1,8 @@
+import { OrderService } from './../../order.service';
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import dtLang from 'src/app/resources/datatable-lang-id.json';
+
 
 @Component({
   selector: 'app-admin-orders',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit {
+  orders;
+  dtOptions: DataTables.Settings = {};
 
-  constructor() { }
+  dtTrigger: Subject<any> = new Subject<any>();
 
-  ngOnInit(): void {
+  constructor(orderService: OrderService) {
+    orderService.getOrders().subscribe(orders => {
+      this.orders = orders;
+      this.dtTrigger.next();
+    }
+    );
   }
 
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      language: dtLang
+    };
+
+
+  }
 }

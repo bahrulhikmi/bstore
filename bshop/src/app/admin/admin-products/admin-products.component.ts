@@ -17,12 +17,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private productService:ProductService) { 
-    this.subscription= productService.getAll()
-    .subscribe(products => {
-      this.products = products;
-      this.dtTrigger.next();
-    });    
+  constructor(private productService: ProductService) {
+    this.subscription = productService.getAll()
+      .subscribe(products => {
+        this.products = products;
+        this.dtTrigger.next();
+      });
   }
 
   ngOnDestroy(): void {
@@ -33,13 +33,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength:10,
+      pageLength: 10,
       language: dtLang
-    };  
-    
-  }
+    };
 
-  edit(p){
-    console.log(p);
   }
 }

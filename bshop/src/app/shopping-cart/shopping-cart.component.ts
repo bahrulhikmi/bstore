@@ -1,7 +1,7 @@
-import { ShoppingCart } from './../models/shopping-cart';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',

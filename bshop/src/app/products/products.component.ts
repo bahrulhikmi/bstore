@@ -1,12 +1,11 @@
 import { switchMap } from 'rxjs/operators';
-import { Product } from './../models/product';
+import { Product } from 'shared/models/product';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from './../category.service';
-import { ProductService } from './../product.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { Subscription, Observable } from 'rxjs';
-import { ShoppingCart } from '../models/shopping-cart';
+import { ProductService } from 'shared/services/product.service';
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+import { Observable } from 'rxjs';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Component({
   selector: 'app-products',

@@ -1,1 +1,63 @@
-<button (click)="login()" class="btn btn-primary">Login with Google</button>
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Login</h3>
+            
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password *" value="" />
+
+                  
+
+            </div>
+            <div class="row no-gutters justify-content-between">
+                <div class ="col-sm-6">
+                    <input type="submit" class="btn btn-primary" value="Login" />    
+                </div>
+                
+                <div class =" float-right">
+                        <input type="submit" class="btn btn-link " value="Lupa Password?" />    
+                </div>
+            </div>
+               
+            <hr class="action-separator">
+
+            <div class="row no-gutters justify-content-between">
+                <div class="form-group">
+                    <button (click)="login()" class="btn btn-link">Login dengan <i class="fa fa-google-plus"></i></button>
+                </div>
+                
+                <div class="form-group">
+                    <button (click)="login()" class="btn btn-link">Buat Akun</button>
+                </div>
+            </div>
+
+            
+              
+            </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3></h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+
+                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

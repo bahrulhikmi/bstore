@@ -3,7 +3,7 @@ import { OrderService } from 'shared/services/order.service';
 import { AuthService } from 'shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import dtLang from 'app/resources/datatable-lang-id.json';
+import dtLang from 'shared/resources/datatable-lang-id.json';
 
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { Product } from 'shared/models/product';
 import { ProductService } from 'shared/services/product.service';
-import dtLang from 'app/resources/datatable-lang-id.json';
+import dtLang from 'shared/resources/datatable-lang-id.json';
 
 @Component({
   selector: 'app-admin-products',

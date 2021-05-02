@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs'
-import { AuthService } from 'shared/services/auth.service';
 import { AppUser } from 'shared/models/app-user';
+import { AuthService } from 'shared/services/auth.service';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+
 
 @Component({
   selector: 'bs-navbar',
@@ -13,6 +13,7 @@ export class BsNavbarComponent implements OnInit {
 
   appUser: AppUser;
   shoppingCartItemCount: number;
+  isCollapsed = true;
 
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }

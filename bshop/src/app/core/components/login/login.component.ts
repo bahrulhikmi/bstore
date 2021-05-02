@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'shared/services/auth.service';
 
 @Component({
@@ -10,8 +10,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) { }
 
-  login(){
+  login() {
     this.auth.login();
   }
-
 }

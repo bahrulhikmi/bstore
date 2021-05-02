@@ -1,3 +1,8 @@
-.sticky-top{
-    top: 80px;
+.sticky-top {
+  top: 80px;
+}
+
+.list-group-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

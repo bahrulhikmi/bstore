@@ -1,21 +1,22 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" routerLink="/">
-            <i class="fa fa-leaf"></i> L'organics
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button"
+            aria-controls="navbarsExampleDefault" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <a class="navbar-brand" routerLink="/">
+            <i class="fa fa-leaf"></i> L'organics            
+        </a>
+
+        <a class="nav-link" routerLink="/shopping-cart">
+            <i class="fa fa-shopping-cart"> </i>  
+            <span class="badge badge-warning badge-pill">{{ shoppingCartItemCount }}</span>
+        </a>
+      
+        <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/shopping-cart">
-                        <i class="fa fa-shopping-cart"> </i>  
-                        <span class="badge badge-warning badge-pill">{{ shoppingCartItemCount }}</span>
-                    </a>
-                </li>
                 <ng-template #anonymousUser>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/login">Login</a>
